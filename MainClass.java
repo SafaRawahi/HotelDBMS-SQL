@@ -2,6 +2,8 @@ package hotelSql;
 
 import java.util.Scanner;
 
+
+
 public class MainClass {
 	
 	static void mainMenue() {
@@ -11,11 +13,13 @@ public class MainClass {
 		System.out.println("\t \t ****************************** \t \t");
 		System.out.println("\t \t ***Please Choose One Option*** \t \t");
 		System.out.println("\t \t ****************************** \t \t");
-		System.out.println("\t\t 1. Create Student Table ");
-		System.out.println("\t\t 2. Create Subject Table  ");
-		System.out.println("\t\t 3. Select Top 10 Students  ");
-		System.out.println("\t\t 4. Student And Subject Menue  ");
-		System.out.println("\t\t 5. Exite ");
+		System.out.println("\t\t 1. Create Hotels Table ");
+		System.out.println("\t\t 2. Create Room Type Table  ");
+		System.out.println("\t\t 3. Create Rooms Table ");
+		System.out.println("\t\t 4. Create Guests Table  ");
+		System.out.println("\t\t 5. Create Employee Type Table  ");
+		System.out.println("\t\t 6. Create Employees Table  ");
+		System.out.println("\t\t 7. Exite ");
 	
 }
 
@@ -34,13 +38,15 @@ public class MainClass {
 				
 				case 1:
 
-
+					Hotel hotelTable = new Hotel ();
+					hotelTable . hotelTable();
 				
 						
 						break;
 
 				case 2:
-            
+					RoomType myRoomTypeTable = new RoomType();
+					myRoomTypeTable . roomTableType();
             
 						break;
 					
@@ -55,9 +61,16 @@ public class MainClass {
 					
 				            
 						break;	
-						
-						
 				case 5:
+					
+		            
+					break;
+				case 6:
+					
+		            
+					break;
+						
+				case 7:
 						System.out.println(" See You Soon ");
 						System.exit(0);
 						

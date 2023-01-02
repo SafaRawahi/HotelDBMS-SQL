@@ -1,0 +1,3 @@
+CREATE DATABASE HotelDBMS;
+use HotelDBMS;
+select * from hotel;
