@@ -56,20 +56,29 @@ public class MainClass {
 					myRoomTable.roomTable();
 					
 					
-					break;				
+					break;
+					
 					
 				case 4:
+					Guest myGuestTable = new Guest();
+					myGuestTable.GuestsTable();
 					
 				            
 						break;	
+						
 				case 5:
-					
+					EmployeeType myEmployeeType = new EmployeeType();
+					myEmployeeType.EmployeeTableType();
 		            
 					break;
+					
+					
 				case 6:
-					
+					Employee myEmployee = new Employee();
+					myEmployee.employeeTable();
 		            
 					break;
+					
 						
 				case 7:
 						System.out.println(" See You Soon ");

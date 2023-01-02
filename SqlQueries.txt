@@ -1,3 +1,21 @@
 CREATE DATABASE HotelDBMS;
 use HotelDBMS;
 select * from hotel;
+select * from roomtype;
+select * from room;
+select * from guest;
+select * from employeetabletype;
+
+select * from employees;
+
+
+CREATE TABLE Employees
+(
+id INTEGER ,
+employee_Type_id INTEGER REFERENCES EmployeeType (id), 
+	Room_id INTEGER REFERENCES Hotel (id), 
+	  created_Date Date NOT NULL,
+      updated_Date Date, 
+	  is_Active Boolean NOT NULL, 
+      PRIMARY KEY (id));
+	                  
