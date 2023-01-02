@@ -52,7 +52,8 @@ public class MainClass {
 					
 				
 				case 3:
-					
+					Room myRoomTable = new Room();
+					myRoomTable.roomTable();
 					
 					
 					break;				
