@@ -28,25 +28,24 @@ public void employeeTable() {
 	        // Entering the data
 	        Scanner scanner = new Scanner(System.in);
 	        
-	        String sql = "CREATE TABLE Employees "+
-	        
-	        "(id INTEGER ,"+
-	        "employee_Type_id INTEGER REFERENCES EmployeeType (id)," +
-	        
-	        	"Room_id INTEGER REFERENCES Hotel (id),"+ 
-	        	  "created_Date Date NOT NULL,"+
-	              "updated_Date Date, "+
-	        	  "is_Active Boolean NOT NULL,"+ 
-	              "PRIMARY KEY (id))";
+//	        String sql = "CREATE TABLE Employees "+
+//	        
+//	        "(id INTEGER ,"+
+//	        "employee_Type_id INTEGER REFERENCES EmployeeType (id)," +
+//	        
+//	        	"Room_id INTEGER REFERENCES Hotel (id),"+ 
+//	        	  "created_Date Date NOT NULL,"+
+//	              "updated_Date Date, "+
+//	        	  "is_Active Boolean NOT NULL,"+ 
+//	              "PRIMARY KEY (id))";
 	        	                  
 	        
 	        
-//	        String sql = "CREATE TABLE Employees " + "(id INTEGER , " +" employee_Type_id INTEGER ,"+
-//	        " FOREIGN KEY (employee_Type_id)REFERENCES EmployeeType (id)ON DELETE CASCADE, "+
-//	        		" Room_id INTEGER, " +" FOREIGN KEY (Room_id) REFERENCES Hotel (id) ON DELETE CASCADE,  "+
-//	        		"  created_Date Date NOT NULL, "+"  updated_Date Date, "+
-//	        		" is_Active Boolean NOT NULL, "+"PRIMARY KEY (id), " +
-//	                   ")"; 
+	        String sql = "CREATE TABLE Employees (id INTEGER , employee_Type_id INTEGER REFERENCES EmployeeType (id), "+
+	        		" Room_id INTEGER " +" REFERENCES Rooms (id),  "+
+	        		"  created_Date Date NOT NULL, "+"  updated_Date Date, "+
+	        		" is_Active Boolean NOT NULL, "+"PRIMARY KEY (id) " +
+	                   ")"; 
 
 	        // Connection class object
 	        Connection con = null;
