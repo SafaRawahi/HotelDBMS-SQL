@@ -11,6 +11,47 @@ import java.util.Scanner;
 
 public class Hotel {
 	
+	public void getById(){
+		String url = "jdbc:mysql://localhost:3306/HotelDBMS";
+
+        // Username and password to access DB
+        // Custom initialization
+        String user = "root";
+        String pass = "root";	
+        Connection con = null;
+        try {
+
+            Driver driver = (Driver) Class.forName("com.mysql.cj.jdbc.Driver").newInstance();
+            // Registering drivers
+            DriverManager.registerDriver(driver);
+
+            // Reference to connection interface
+            con = DriverManager.getConnection(url, user,
+                    pass);
+
+            // Creating a statement
+            Statement st = con.createStatement();
+            Scanner scanner=new Scanner(System.in);
+            System.out.println("Numbers Of Id You Want To Show ");
+            int inputid =scanner.nextInt();
+            int count=1;
+            String sql="select * from hotel where id='"+inputid+"'";
+            ResultSet rs=st.executeQuery(sql);
+            while (rs.next()&&count<=inputid) {
+            	 int id=rs.getInt("id");
+                 String hotelname=rs.getString("hotelName");
+                 String hotellocation= rs.getString("hotelLocation");
+                 Date createddate= rs.getDate("createdDate");
+                 Date updateddate= rs.getDate("updateddDate");
+                 String isActive=rs.getString("isActive");
+                 System.out.println(id +" "+hotelname+" "+hotellocation+" "+createddate+" "+updateddate+" " +isActive);
+                 count++;
+            }}
+        catch (Exception ex) {
+            System.err.println(ex);
+        }	
+	}
+		
 //	method to read From Table
 	public  void readFromTable(){
 		String url = "jdbc:mysql://localhost:3306/HotelDBMS";
@@ -35,7 +76,7 @@ public class Hotel {
             Scanner scanner=new Scanner(System.in);
             System.out.println("Numbers Of User You Want To Read ");
             int read =scanner.nextInt();
-            int count=0;
+            int count=1;
             String sql="select * from hotel";
             ResultSet rs=st.executeQuery(sql);
             while (rs.next()&&count<=read) {
@@ -54,9 +95,6 @@ public class Hotel {
 		}
         
         
-        
-	
-	
 //  method to insert values in hotel table
 	public void insertIntoTable(){
 		

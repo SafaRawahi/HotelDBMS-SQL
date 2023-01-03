@@ -20,13 +20,13 @@ public class MainClass {
 		System.out.println("\t\t 5. Create Employee Type Table  ");
 		System.out.println("\t\t 6. Create Employees Table  ");
 		System.out.println("\t\t 7. Insert values Hotels  ");
-		System.out.println("\t\t 8. Read from Hotels  ");
-		System.out.println("\t\t 9. Exite ");
-	
+		System.out.println("\t\t 8. Read from Hotels Table  ");
+		System.out.println("\t\t 9. Read from Hotels Table By Id ");
+		System.out.println("\t\t 10. Exite ");
 }
 
 	 public static void main(String a[])  {
-		
+		 Hotel hotelTable = new Hotel ();
 		 boolean isExit = true;
 
 			while (isExit) {
@@ -40,7 +40,7 @@ public class MainClass {
 				
 				case 1:
 
-					Hotel hotelTable = new Hotel ();
+//					Hotel hotelTable = new Hotel ();
 					hotelTable . hotelTable();
 				
 						break;
@@ -70,24 +70,29 @@ public class MainClass {
 					
 				case 6:
 					Employee myEmployee = new Employee();
-					myEmployee.employeeTable();
-		            
+					myEmployee.employeeTable();   
 					break;
+					
+					
 					
 				case 7:
-					Hotel hotelTable1 = new Hotel ();
-					hotelTable1.insertIntoTable();
-					
-					
+					hotelTable.insertIntoTable();
 					break;
+					
+					
 					
 				case 8:
-					Hotel hotelTable2 = new Hotel ();
-					hotelTable2.readFromTable();
+					hotelTable.readFromTable();
 					break;
 						
-					
 				case 9:
+					hotelTable.getById();
+					break;
+					
+					
+					
+					
+				case 10:
 						System.out.println(" See You Soon ");
 						System.exit(0);
 						
