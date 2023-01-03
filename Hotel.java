@@ -4,6 +4,7 @@ import java.sql.Connection;
 import java.sql.Date;
 import java.sql.Driver;
 import java.sql.DriverManager;
+import java.sql.ResultSet;
 import java.sql.Statement;
 import java.util.Random;
 import java.util.Scanner;
@@ -12,10 +13,49 @@ public class Hotel {
 	
 //	method to read From Table
 	public  void readFromTable(){
+		String url = "jdbc:mysql://localhost:3306/HotelDBMS";
 
+        // Username and password to access DB
+        // Custom initialization
+        String user = "root";
+        String pass = "root";	
+        Connection con = null;
+        try {
+
+            Driver driver = (Driver) Class.forName("com.mysql.cj.jdbc.Driver").newInstance();
+            // Registering drivers
+            DriverManager.registerDriver(driver);
+
+            // Reference to connection interface
+            con = DriverManager.getConnection(url, user,
+                    pass);
+
+            // Creating a statement
+            Statement st = con.createStatement();
+            Scanner scanner=new Scanner(System.in);
+            System.out.println("Numbers Of User You Want To Read ");
+            int read =scanner.nextInt();
+            int count=0;
+            String sql="select * from hotel";
+            ResultSet rs=st.executeQuery(sql);
+            while (rs.next()&&count<=read) {
+            	int id=rs.getInt("id");
+                 String hotelName=rs.getString("hotelName");
+                 String hotelLocation= rs.getString("hotelLocation");
+                 Date createdDate= rs.getDate("createdDate");
+                 Date updateddDate= rs.getDate("updateddDate");
+                 String isActive=rs.getString("isActive");
+                 System.out.println(id +" "+hotelName+" "+hotelLocation+" "+createdDate+" "+updateddDate+" " +isActive);
+                 count++;
+            }}
+        catch (Exception ex) {
+            System.err.println(ex);
+        }	
+		}
+        
+        
+        
 	
-	
-	}
 	
 //  method to insert values in hotel table
 	public void insertIntoTable(){

@@ -20,7 +20,7 @@ public class MainClass {
 		System.out.println("\t\t 5. Create Employee Type Table  ");
 		System.out.println("\t\t 6. Create Employees Table  ");
 		System.out.println("\t\t 7. Insert values Hotels  ");
-		System.out.println("\t\t 8. read from Hotels  ");
+		System.out.println("\t\t 8. Read from Hotels  ");
 		System.out.println("\t\t 9. Exite ");
 	
 }
@@ -82,8 +82,8 @@ public class MainClass {
 					break;
 					
 				case 8:
-					
-					
+					Hotel hotelTable2 = new Hotel ();
+					hotelTable2.readFromTable();
 					break;
 						
 					
