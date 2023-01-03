@@ -22,7 +22,8 @@ public class MainClass {
 		System.out.println("\t\t 7. Insert values Hotels  ");
 		System.out.println("\t\t 8. Read from Hotels Table  ");
 		System.out.println("\t\t 9. Read from Hotels Table By Id ");
-		System.out.println("\t\t 10. Exite ");
+		System.out.println("\t\t 10. Update from Hotels Table By Id ");
+		System.out.println("\t\t 11. Exite ");
 }
 
 	 public static void main(String a[])  {
@@ -90,9 +91,13 @@ public class MainClass {
 					break;
 					
 					
-					
-					
 				case 10:
+					
+					hotelTable.updateById();
+					break;
+					
+					
+				case 11:
 						System.out.println(" See You Soon ");
 						System.exit(0);
 						

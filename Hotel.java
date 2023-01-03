@@ -11,6 +11,47 @@ import java.util.Scanner;
 
 public class Hotel {
 	
+//	method to update values by Id
+	public void updateById(){
+		String url = "jdbc:mysql://localhost:3306/HotelDBMS";
+
+        // Username and password to access DB
+        // Custom initialization
+        String user = "root";
+        String pass = "root";	
+        Connection con = null;
+        
+        try {
+            Driver driver = (Driver) Class.forName("com.mysql.cj.jdbc.Driver").newInstance();
+            // Registering drivers
+            DriverManager.registerDriver(driver);
+
+            // Reference to connection interface
+            con = DriverManager.getConnection(url, user,
+                    pass);
+
+            // Creating a statement
+            Statement st = con.createStatement();
+            Scanner scanner=new Scanner(System.in);
+            
+            System.out.println("Number Of Id You Want To Update ");
+            int inputid =scanner.nextInt();
+//      int count=1;
+            System.out.println("Enter Hotel Name: ");
+    		String hotelNameInput = scanner.next();
+    		System.out.println("Enter Hotel Location: ");
+    		String hotelLocatoinInput = scanner.next();
+    		String sql = "UPDATE Hotels SET hotel_name='" + hotelNameInput + "',hotel_location='" + hotelLocatoinInput
+    				+ "' WHERE id='" + inputid + "'";
+            
+            }
+        catch (Exception ex) {
+            System.err.println(ex);
+        }	
+	}
+		
+	
+//	method to read From Table by Id
 	public void getById(){
 		String url = "jdbc:mysql://localhost:3306/HotelDBMS";
 
