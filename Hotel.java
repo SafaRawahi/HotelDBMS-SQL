@@ -32,9 +32,9 @@ public class Hotel {
 			// Creating a statement
 			Statement st = con.createStatement();
 			Scanner scanner = new Scanner(System.in);
-			
+
 			int count = 1;
-			String sql="SELECT * FROM hotel ORDER BY id LIMIT "+top;
+			String sql = "SELECT * FROM hotel ORDER BY id LIMIT " + top;
 			ResultSet rs = st.executeQuery(sql);
 			while (rs.next() && count <= top) {
 				int id = rs.getInt("id");
@@ -46,7 +46,6 @@ public class Hotel {
 				System.out.println(id + " " + hotelname + " " + hotellocation + " " + createddate + " " + updateddate
 						+ " " + isActive);
 				count++;
-				
 
 //				try {
 //					// Executing query
@@ -57,13 +56,11 @@ public class Hotel {
 //				}
 
 			}
-//			
-		} 
-		catch (Exception ex) {
+
+		} catch (Exception ex) {
 			System.err.println(ex);
 		}
-		
-		
+
 	}
 
 //	10,000 hotels and One hotels
@@ -155,7 +152,7 @@ public class Hotel {
 			int inputid = scanner.nextInt();
 //      int count=1;
 
-			String sql = "UPDATE hotel SET isActive='0' WHERE id<=" + inputid  ;
+			String sql = "UPDATE hotel SET isActive='0' WHERE id<=" + inputid;
 			System.out.println(sql);
 
 			try {
@@ -373,7 +370,7 @@ public class Hotel {
 		Integer numberToAdd = rn.nextInt(100);
 
 		for (int i = 0; i <= rows; i++) {
-			String sql = "insert into hotel values (" + i + numberToAdd + ", '" + hotelName + i + "', '" + hotelLocation
+			String sql = "insert into hotel values (" + i + ", '" + hotelName + i + "', '" + hotelLocation
 					+ i + "', '" + createdDate + "', '" + updateddDate + "', " + isActive + ")";
 
 			// Connection class object
@@ -432,9 +429,9 @@ public class Hotel {
 
 		// Entering the data
 		Scanner scanner = new Scanner(System.in);
-		String sql = "CREATE TABLE Hotel " + "(id INTEGER PRIMARY KEY, " + " hotelName VARCHAR(8) NOT NULL, "
-				+ "  hotelLocation VARCHAR(8), " + "  createdDate Date NOT NULL, " + "  updateddDate Date, "
-				+ " isActive bit NOT NULL" + ")";
+		String sql = "CREATE TABLE Hotel " + "(id INTEGER PRIMARY KEY AUTO_INCREMENT, "
+				+ " hotelName VARCHAR(8) NOT NULL, " + "  hotelLocation VARCHAR(8), " + "  createdDate Date NOT NULL, "
+				+ " updateddDate Date, " + " isActive bit NOT NULL" + ")";
 
 		// Connection class object
 		Connection con = null;

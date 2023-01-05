@@ -16,8 +16,8 @@ public class MainClass {
 		System.out.println("\t\t 3. Print 10 hotels ");
 		System.out.println("\t\t 4. make Is Active False first 10 ");
 		System.out.println("\t\t 5. Print hotel information by user input  ");
-		
-//		System.out.println("\t\t 3. Create Rooms Table ");
+
+		System.out.println("\t\t 6. Create Rooms Table ");
 //		System.out.println("\t\t 4. Create Guests Table  ");
 //		System.out.println("\t\t 5. Create Employee Type Table  ");
 //		System.out.println("\t\t 6. Create Employees Table  ");
@@ -33,7 +33,9 @@ public class MainClass {
 	public static void main(String a[]) {
 
 		Hotel hotelTable = new Hotel();
-
+		Employee employeeTable = new Employee();
+		
+		
 		boolean isExit = true;
 
 		while (isExit) {
@@ -58,7 +60,7 @@ public class MainClass {
 // one hotel
 
 				hotelTable.insertMoreHotels(1);
-				
+
 //				RoomType myRoomTypeTable = new RoomType();
 //				myRoomTypeTable.roomTableType();
 				break;
@@ -72,7 +74,7 @@ public class MainClass {
 				break;
 
 			case 4:
-				
+
 				hotelTable.makeIsActiveFalseById();
 //				Guest myGuestTable = new Guest();
 //				myGuestTable.GuestsTable();
@@ -82,16 +84,19 @@ public class MainClass {
 			case 5:
 				System.out.println(" Enter The Numbers Of Hotal You Want To Print ");
 				int n = sc.nextInt();
-				hotelTable.printTenHotels( n );
-				
+				hotelTable.printTenHotels(n);
+
 //				EmployeeType myEmployeeType = new EmployeeType();
 //				myEmployeeType.EmployeeTableType();
 
 				break;
 
 			case 6:
-				Employee myEmployee = new Employee();
-				myEmployee.employeeTable();
+				
+				hotelTable.hotelTable();
+				
+//				Employee myEmployee = new Employee();
+//				myEmployee.employeeTable();
 				break;
 
 			case 7:
