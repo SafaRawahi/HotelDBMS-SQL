@@ -7,69 +7,64 @@ import java.sql.Statement;
 import java.util.Scanner;
 
 public class Guest {
-public void GuestsTable() {
-		
+	public void GuestsTable() {
+
 		// Java Program to Establish Connection in JDBC
-	
-	    // Main class
 
-	    // Main driver method
-	   
-	        // Creating the connection using Oracle DB
-	        // Note: url syntax is standard, so do grasp
-	        String url = "jdbc:mysql://localhost:3306/HotelDBMS";
+		// Main class
 
-	        // Username and password to access DB
-	        // Custom initialization
-	        String user = "root";
-	        String pass = "root";
+		// Main driver method
 
-	        // Entering the data
-	        Scanner scanner = new Scanner(System.in);
-	        String sql = "CREATE TABLE Guest " + "(id INTEGER , " +" Guest_Name VARCHAR(8) NOT NULL,"+
-	        "Guest_Phone VARCHAR(8) NOT NULL," + "guest_accompanying_members INTEGER NOT NULL," +
-	        		"guest_payment_amount INTEGER NOT NULL," + 
-	        "room_id INTEGER , "+" FOREIGN KEY (room_id) REFERENCES Room(id) ON DELETE CASCADE,  "+
-	        "hotel_id INTEGER, "+"FOREIGN KEY (hotel_id) REFERENCES Hotel(id) ON DELETE CASCADE,  "
-	        +"created_Date DATE NOT NULL, "+"  updated_Date DATE, "+" is_Active Boolean NOT NULL,"+ "PRIMARY KEY(id)"+
-	                   ")"; 
+		// Creating the connection using Oracle DB
+		// Note: url syntax is standard, so do grasp
+		String url = "jdbc:mysql://localhost:3306/HotelDBMS";
 
-	        // Connection class object
-	        Connection con = null;
+		// Username and password to access DB
+		// Custom initialization
+		String user = "root";
+		String pass = "root";
 
-	        // Try block to check for exceptions
-	        try {
+		// Entering the data
+		Scanner scanner = new Scanner(System.in);
+		String sql = "CREATE TABLE Guest " + "(id INTEGER , " + " Guest_Name VARCHAR(8) NOT NULL,"
+				+ "Guest_Phone VARCHAR(8) NOT NULL," + "guest_accompanying_members INTEGER NOT NULL,"
+				+ "guest_payment_amount INTEGER NOT NULL," + "room_id INTEGER , "
+				+ " FOREIGN KEY (room_id) REFERENCES Room(id) ON DELETE CASCADE,  " + "hotel_id INTEGER, "
+				+ "FOREIGN KEY (hotel_id) REFERENCES Hotel(id) ON DELETE CASCADE,  " + "created_Date DATE NOT NULL, "
+				+ "  updated_Date DATE, " + " is_Active Boolean NOT NULL," + "PRIMARY KEY(id)" + ")";
 
-	            Driver driver = (Driver) Class.forName("com.mysql.cj.jdbc.Driver").newInstance();
-	            // Registering drivers
-	            DriverManager.registerDriver(driver);
+		// Connection class object
+		Connection con = null;
 
-	            // Reference to connection interface
-	            con = DriverManager.getConnection(url, user,
-	                    pass);
+		// Try block to check for exceptions
+		try {
 
-	            // Creating a statement
-	            Statement st = con.createStatement();
+			Driver driver = (Driver) Class.forName("com.mysql.cj.jdbc.Driver").newInstance();
+			// Registering drivers
+			DriverManager.registerDriver(driver);
 
-	            // Executing query
-	            int m = st.executeUpdate(sql);
-	            if (m >=0)
-	                System.out.println(
-	                        "inserted successfully : " + sql);
-	            else
-	                System.out.println("insertion failed");
+			// Reference to connection interface
+			con = DriverManager.getConnection(url, user, pass);
 
-	            // Closing the connections
-	            con.close();
-	        }
+			// Creating a statement
+			Statement st = con.createStatement();
 
-	        // Catch block to handle exceptions
-	        catch (Exception ex) {
-	            // Display message when exceptions occurs
-	            System.err.println(ex);
-	        }
-	    
-	
-		
+			// Executing query
+			int m = st.executeUpdate(sql);
+			if (m >= 0)
+				System.out.println("inserted successfully : " + sql);
+			else
+				System.out.println("insertion failed");
+
+			// Closing the connections
+			con.close();
+		}
+
+		// Catch block to handle exceptions
+		catch (Exception ex) {
+			// Display message when exceptions occurs
+			System.err.println(ex);
+		}
+
 	}
 }

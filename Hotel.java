@@ -11,6 +11,95 @@ import java.util.Scanner;
 
 public class Hotel {
 
+//	method to update value in one column
+	public void makeIsActiveFalseById() {
+		String url = "jdbc:mysql://localhost:3306/HotelDBMS";
+
+		// Username and password to access DB
+		// Custom initialization
+		String user = "root";
+		String pass = "root";
+		Connection con = null;
+
+		try {
+			Driver driver = (Driver) Class.forName("com.mysql.cj.jdbc.Driver").newInstance();
+			// Registering drivers
+			DriverManager.registerDriver(driver);
+
+			// Reference to connection interface
+			con = DriverManager.getConnection(url, user, pass);
+
+			// Creating a statement
+			Statement st = con.createStatement();
+			Scanner scanner = new Scanner(System.in);
+
+			System.out.println("Number Of Id You Want To Update (is avtive column)");
+			int inputid = scanner.nextInt();
+//      int count=1;
+
+			String sql = "UPDATE hotel SET isActive='0' WHERE id='" + inputid + "'";
+			System.out.println(sql);
+
+			try {
+				// Executing query
+				int m = st.executeUpdate(sql);
+				System.out.println("UPDATED SUCCESSFULLY");
+			} catch (Exception ex) {
+				System.err.println(ex);
+			}
+			// Closing the connections
+			con.close();
+		} catch (Exception ex) {
+			System.err.println(ex);
+		}
+
+	}
+
+//	method to delete values by Id
+	public void deleteById() {
+		String url = "jdbc:mysql://localhost:3306/HotelDBMS";
+
+		// Username and password to access DB
+		// Custom initialization
+		String user = "root";
+		String pass = "root";
+		Connection con = null;
+
+		try {
+			Driver driver = (Driver) Class.forName("com.mysql.cj.jdbc.Driver").newInstance();
+			// Registering drivers
+			DriverManager.registerDriver(driver);
+
+			// Reference to connection interface
+			con = DriverManager.getConnection(url, user, pass);
+
+			// Creating a statement
+			Statement st = con.createStatement();
+			Scanner scanner = new Scanner(System.in);
+
+			System.out.println("Number Of Id You Want To Delete ");
+			int inputid = scanner.nextInt();
+//      int count=1;
+
+			String sql = "delete from hotel where id ='" + inputid + "'";
+
+			System.out.println(sql);
+
+			try {
+				// Executing query
+				int m = st.executeUpdate(sql);
+				System.out.println("UPDATED SUCCESSFULLY");
+			} catch (Exception ex) {
+				System.err.println(ex);
+			}
+			// Closing the connections
+			con.close();
+		} catch (Exception ex) {
+			System.err.println(ex);
+		}
+
+	}
+
 //	method to update values by Id
 	public void updateById() {
 		String url = "jdbc:mysql://localhost:3306/HotelDBMS";

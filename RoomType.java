@@ -11,72 +11,66 @@ public class RoomType {
 	
 	
 	
+	
+	
+	
+	
+//	method to create table
+	public void roomTableType() {
 
-public void roomTableType() {
-		
 		// Java Program to Establish Connection in JDBC
-	
-	    // Main class
 
-	    // Main driver method
-	   
-	        // Creating the connection using Oracle DB
-	        // Note: url syntax is standard, so do grasp
-	        String url = "jdbc:mysql://localhost:3306/HotelDBMS";
+		// Main class
 
-	        // Username and password to access DB
-	        // Custom initialization
-	        String user = "root";
-	        String pass = "root";
+		// Main driver method
 
-	        // Entering the data
-	        Scanner scanner = new Scanner(System.in);
-	        String sql = "CREATE TABLE RoomType " + "(id INTEGER PRIMARY KEY, " +" RoomType VARCHAR(8) NOT NULL, "+
-	        		"  createdDate Date, "+"  updateddDate Date, "+
-	        		" isActive Boolean NOT NULL"+ 
-	                   ")"; 
+		// Creating the connection using Oracle DB
+		// Note: url syntax is standard, so do grasp
+		String url = "jdbc:mysql://localhost:3306/HotelDBMS";
 
-	        // Connection class object
-	        Connection con = null;
+		// Username and password to access DB
+		// Custom initialization
+		String user = "root";
+		String pass = "root";
 
-	        // Try block to check for exceptions
-	        try {
+		// Entering the data
+		Scanner scanner = new Scanner(System.in);
+		String sql = "CREATE TABLE RoomType " + "(id INTEGER PRIMARY KEY, " + " RoomType VARCHAR(8) NOT NULL, "
+				+ "  createdDate Date, " + "  updateddDate Date, " + " isActive Boolean NOT NULL" + ")";
 
-	            Driver driver = (Driver) Class.forName("com.mysql.cj.jdbc.Driver").newInstance();
-	            // Registering drivers
-	            DriverManager.registerDriver(driver);
+		// Connection class object
+		Connection con = null;
 
-	            // Reference to connection interface
-	            con = DriverManager.getConnection(url, user,
-	                    pass);
+		// Try block to check for exceptions
+		try {
 
-	            // Creating a statement
-	            Statement st = con.createStatement();
+			Driver driver = (Driver) Class.forName("com.mysql.cj.jdbc.Driver").newInstance();
+			// Registering drivers
+			DriverManager.registerDriver(driver);
 
-	            // Executing query
-	            int m = st.executeUpdate(sql);
-	            if (m >=0)
-	                System.out.println(
-	                        "inserted successfully : " + sql);
-	            else
-	                System.out.println("insertion failed");
+			// Reference to connection interface
+			con = DriverManager.getConnection(url, user, pass);
 
-	            // Closing the connections
-	            con.close();
-	        }
+			// Creating a statement
+			Statement st = con.createStatement();
 
-	        // Catch block to handle exceptions
-	        catch (Exception ex) {
-	            // Display message when exceptions occurs
-	            System.err.println(ex);
-	        }
-	    
-	
-		
+			// Executing query
+			int m = st.executeUpdate(sql);
+			if (m >= 0)
+				System.out.println("inserted successfully : " + sql);
+			else
+				System.out.println("insertion failed");
+
+			// Closing the connections
+			con.close();
+		}
+
+		// Catch block to handle exceptions
+		catch (Exception ex) {
+			// Display message when exceptions occurs
+			System.err.println(ex);
+		}
+
 	}
 
-	
-	
-	
-	
 }
