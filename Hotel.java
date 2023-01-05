@@ -10,262 +10,257 @@ import java.util.Random;
 import java.util.Scanner;
 
 public class Hotel {
-	
+
 //	method to update values by Id
-	public void updateById(){
+	public void updateById() {
 		String url = "jdbc:mysql://localhost:3306/HotelDBMS";
 
-        // Username and password to access DB
-        // Custom initialization
-        String user = "root";
-        String pass = "root";	
-        Connection con = null;
-        
-        try {
-            Driver driver = (Driver) Class.forName("com.mysql.cj.jdbc.Driver").newInstance();
-            // Registering drivers
-            DriverManager.registerDriver(driver);
+		// Username and password to access DB
+		// Custom initialization
+		String user = "root";
+		String pass = "root";
+		Connection con = null;
 
-            // Reference to connection interface
-            con = DriverManager.getConnection(url, user,
-                    pass);
+		try {
+			Driver driver = (Driver) Class.forName("com.mysql.cj.jdbc.Driver").newInstance();
+			// Registering drivers
+			DriverManager.registerDriver(driver);
 
-            // Creating a statement
-            Statement st = con.createStatement();
-            Scanner scanner=new Scanner(System.in);
-            
-            System.out.println("Number Of Id You Want To Update ");
-            int inputid =scanner.nextInt();
+			// Reference to connection interface
+			con = DriverManager.getConnection(url, user, pass);
+
+			// Creating a statement
+			Statement st = con.createStatement();
+			Scanner scanner = new Scanner(System.in);
+
+			System.out.println("Number Of Id You Want To Update ");
+			int inputid = scanner.nextInt();
 //      int count=1;
-            System.out.println("Enter Hotel Name: ");
-    		String hotelNameInput = scanner.next();
-    		System.out.println("Enter Hotel Location: ");
-    		String hotelLocatoinInput = scanner.next();
-    		String sql = "UPDATE Hotels SET hotel_name='" + hotelNameInput + "',hotel_location='" + hotelLocatoinInput
-    				+ "' WHERE id='" + inputid + "'";
-            
-            }
-        catch (Exception ex) {
-            System.err.println(ex);
-        }	
-	}
-		
-	
-//	method to read From Table by Id
-	public void getById(){
-		String url = "jdbc:mysql://localhost:3306/HotelDBMS";
+			System.out.println("Enter Hotel Name: ");
+			String hotelNameInput = scanner.next();
+			System.out.println("Enter Hotel Location: ");
+			String hotelLocatoinInput = scanner.next();
+			String sql = "UPDATE Hotel SET hotelname='" + hotelNameInput + "',hotellocation='" + hotelLocatoinInput
+					+ "' WHERE id=" + inputid;
+			System.out.println(sql);
 
-        // Username and password to access DB
-        // Custom initialization
-        String user = "root";
-        String pass = "root";	
-        Connection con = null;
-        try {
-
-            Driver driver = (Driver) Class.forName("com.mysql.cj.jdbc.Driver").newInstance();
-            // Registering drivers
-            DriverManager.registerDriver(driver);
-
-            // Reference to connection interface
-            con = DriverManager.getConnection(url, user,
-                    pass);
-
-            // Creating a statement
-            Statement st = con.createStatement();
-            Scanner scanner=new Scanner(System.in);
-            System.out.println("Numbers Of Id You Want To Show ");
-            int inputid =scanner.nextInt();
-            int count=1;
-            String sql="select * from hotel where id='"+inputid+"'";
-            ResultSet rs=st.executeQuery(sql);
-            while (rs.next()&&count<=inputid) {
-            	 int id=rs.getInt("id");
-                 String hotelname=rs.getString("hotelName");
-                 String hotellocation= rs.getString("hotelLocation");
-                 Date createddate= rs.getDate("createdDate");
-                 Date updateddate= rs.getDate("updateddDate");
-                 String isActive=rs.getString("isActive");
-                 System.out.println(id +" "+hotelname+" "+hotellocation+" "+createddate+" "+updateddate+" " +isActive);
-                 count++;
-            }}
-        catch (Exception ex) {
-            System.err.println(ex);
-        }	
-	}
-		
-//	method to read From Table
-	public  void readFromTable(){
-		String url = "jdbc:mysql://localhost:3306/HotelDBMS";
-
-        // Username and password to access DB
-        // Custom initialization
-        String user = "root";
-        String pass = "root";	
-        Connection con = null;
-        try {
-
-            Driver driver = (Driver) Class.forName("com.mysql.cj.jdbc.Driver").newInstance();
-            // Registering drivers
-            DriverManager.registerDriver(driver);
-
-            // Reference to connection interface
-            con = DriverManager.getConnection(url, user,
-                    pass);
-
-            // Creating a statement
-            Statement st = con.createStatement();
-            Scanner scanner=new Scanner(System.in);
-            System.out.println("Numbers Of User You Want To Read ");
-            int read =scanner.nextInt();
-            int count=1;
-            String sql="select * from hotel";
-            ResultSet rs=st.executeQuery(sql);
-            while (rs.next()&&count<=read) {
-            	int id=rs.getInt("id");
-                 String hotelName=rs.getString("hotelName");
-                 String hotelLocation= rs.getString("hotelLocation");
-                 Date createdDate= rs.getDate("createdDate");
-                 Date updateddDate= rs.getDate("updateddDate");
-                 String isActive=rs.getString("isActive");
-                 System.out.println(id +" "+hotelName+" "+hotelLocation+" "+createdDate+" "+updateddDate+" " +isActive);
-                 count++;
-            }}
-        catch (Exception ex) {
-            System.err.println(ex);
-        }	
+			try {
+				// Executing query
+				int m = st.executeUpdate(sql);
+				System.out.println("UPDATED SUCCESSFULLY");
+			} catch (Exception ex) {
+				System.err.println(ex);
+			}
+			// Closing the connections
+			con.close();
+		} catch (Exception ex) {
+			System.err.println(ex);
 		}
-        
-        
-//  method to insert values in hotel table
-	public void insertIntoTable(){
-		
+	}
+
+//	method to read From Table by Id
+	public void getById() {
 		String url = "jdbc:mysql://localhost:3306/HotelDBMS";
 
-        // Username and password to access DB
-        // Custom initialization
-        String user = "root";
-        String pass = "root";
+		// Username and password to access DB
+		// Custom initialization
+		String user = "root";
+		String pass = "root";
+		Connection con = null;
+		try {
 
-           // Entering the data
-           // Inserting data using SQL query
-            Scanner scanner=new Scanner(System.in);
-            System.out.println(" Enter The Numbers Of  Rows You Want ");
-            Integer rows = scanner.nextInt();
-             String hotelName="Shang";
-             String hotelLocation="Muscat";
-             String createdDate="1996-01-01";
-             String updateddDate="2015-01-01";
-             boolean isActive=true;
-             Random rn = new Random();
-             Integer numberToAdd = rn.nextInt(100);
-             
-             for(int i=0; i<=rows ; i++) {
-             String sql = "insert into hotel values ("+i+numberToAdd+", '"+hotelName+i+"', '"+hotelLocation+i+"', '"+
-            		 createdDate+"', '"+updateddDate+"', "+isActive+")";
+			Driver driver = (Driver) Class.forName("com.mysql.cj.jdbc.Driver").newInstance();
+			// Registering drivers
+			DriverManager.registerDriver(driver);
 
-             // Connection class object
-             Connection con = null;
+			// Reference to connection interface
+			con = DriverManager.getConnection(url, user, pass);
 
-             // Try block to check for exceptions
-             try {
+			// Creating a statement
+			Statement st = con.createStatement();
+			Scanner scanner = new Scanner(System.in);
+			System.out.println("Numbers Of Id You Want To Show ");
+			int inputid = scanner.nextInt();
+			int count = 1;
+			String sql = "select * from hotel where id='" + inputid + "'";
+			ResultSet rs = st.executeQuery(sql);
+			while (rs.next() && count <= inputid) {
+				int id = rs.getInt("id");
+				String hotelname = rs.getString("hotelName");
+				String hotellocation = rs.getString("hotelLocation");
+				Date createddate = rs.getDate("createdDate");
+				Date updateddate = rs.getDate("updateddDate");
+				String isActive = rs.getString("isActive");
+				System.out.println(id + " " + hotelname + " " + hotellocation + " " + createddate + " " + updateddate
+						+ " " + isActive);
+				count++;
+			}
+		} catch (Exception ex) {
+			System.err.println(ex);
+		}
+	}
 
-                 Driver driver = (Driver) Class.forName("com.mysql.cj.jdbc.Driver").newInstance();
-                 // Registering drivers
-                 DriverManager.registerDriver(driver);
+//	method to read From Table
+	public void readFromTable() {
+		String url = "jdbc:mysql://localhost:3306/HotelDBMS";
 
-                 // Reference to connection interface
-                 con = DriverManager.getConnection(url, user,
-                         pass);
+		// Username and password to access DB
+		// Custom initialization
+		String user = "root";
+		String pass = "root";
+		Connection con = null;
+		try {
 
- 	            // Creating a statement
- 	            Statement st = con.createStatement();
+			Driver driver = (Driver) Class.forName("com.mysql.cj.jdbc.Driver").newInstance();
+			// Registering drivers
+			DriverManager.registerDriver(driver);
 
- 	            // Executing query
- 	            int m = st.executeUpdate(sql);
- 	            if (m >=0)
- 	                System.out.println(
- 	                        "inserted values successfully : " + sql);
- 	            else
- 	                System.out.println("insertion values failed");
+			// Reference to connection interface
+			con = DriverManager.getConnection(url, user, pass);
 
- 	            // Closing the connections
- 	            con.close();
- 	        }
+			// Creating a statement
+			Statement st = con.createStatement();
+			Scanner scanner = new Scanner(System.in);
+			System.out.println("Numbers Of User You Want To Read ");
+			int read = scanner.nextInt();
+			int count = 1;
+			String sql = "select * from hotel";
+			ResultSet rs = st.executeQuery(sql);
+			while (rs.next() && count <= read) {
+				int id = rs.getInt("id");
+				String hotelName = rs.getString("hotelName");
+				String hotelLocation = rs.getString("hotelLocation");
+				Date createdDate = rs.getDate("createdDate");
+				Date updateddDate = rs.getDate("updateddDate");
+				String isActive = rs.getString("isActive");
+				System.out.println(id + " " + hotelName + " " + hotelLocation + " " + createdDate + " " + updateddDate
+						+ " " + isActive);
+				count++;
+			}
+		} catch (Exception ex) {
+			System.err.println(ex);
+		}
+	}
 
- 	        // Catch block to handle exceptions
- 	        catch (Exception ex) {
- 	            // Display message when exceptions occurs
- 	            System.err.println(ex);
- 	        }
- 	    
-    
-             }
-             }
-  
+//  method to insert values in hotel table
+	public void insertIntoTable() {
 
-	
+		String url = "jdbc:mysql://localhost:3306/HotelDBMS";
+
+		// Username and password to access DB
+		// Custom initialization
+		String user = "root";
+		String pass = "root";
+
+		// Entering the data
+		// Inserting data using SQL query
+		Scanner scanner = new Scanner(System.in);
+		System.out.println(" Enter The Numbers Of  Rows You Want ");
+		Integer rows = scanner.nextInt();
+		String hotelName = "Shang";
+		String hotelLocation = "Muscat";
+		String createdDate = "1996-01-01";
+		String updateddDate = "2015-01-01";
+		boolean isActive = true;
+		Random rn = new Random();
+		Integer numberToAdd = rn.nextInt(100);
+
+		for (int i = 0; i <= rows; i++) {
+			String sql = "insert into hotel values (" + i + numberToAdd + ", '" + hotelName + i + "', '" + hotelLocation
+					+ i + "', '" + createdDate + "', '" + updateddDate + "', " + isActive + ")";
+
+			// Connection class object
+			Connection con = null;
+
+			// Try block to check for exceptions
+			try {
+
+				Driver driver = (Driver) Class.forName("com.mysql.cj.jdbc.Driver").newInstance();
+				// Registering drivers
+				DriverManager.registerDriver(driver);
+
+				// Reference to connection interface
+				con = DriverManager.getConnection(url, user, pass);
+
+				// Creating a statement
+				Statement st = con.createStatement();
+
+				// Executing query
+				int m = st.executeUpdate(sql);
+				if (m >= 0)
+					System.out.println("inserted values successfully : " + sql);
+				else
+					System.out.println("insertion values failed");
+
+				// Closing the connections
+				con.close();
+			}
+
+			// Catch block to handle exceptions
+			catch (Exception ex) {
+				// Display message when exceptions occurs
+				System.err.println(ex);
+			}
+
+		}
+	}
+
 //  method to create hotel table
 	public void hotelTable() {
-		
+
 		// Java Program to Establish Connection in JDBC
-	
-	    // Main class
 
-	    // Main driver method
-	   
-	        // Creating the connection using Oracle DB
-	        // Note: url syntax is standard, so do grasp
-	        String url = "jdbc:mysql://localhost:3306/HotelDBMS";
+		// Main class
 
-	        // Username and password to access DB
-	        // Custom initialization
-	        String user = "root";
-	        String pass = "root";
+		// Main driver method
 
-	        // Entering the data
-	        Scanner scanner = new Scanner(System.in);
-	        String sql = "CREATE TABLE Hotel " + "(id INTEGER PRIMARY KEY, " +" hotelName VARCHAR(8) NOT NULL, "+
-	        		"  hotelLocation VARCHAR(8), "+"  createdDate Date NOT NULL, "+"  updateddDate Date, "+
-	        		" isActive bit NOT NULL"+ 
-	                   ")"; 
+		// Creating the connection using Oracle DB
+		// Note: url syntax is standard, so do grasp
+		String url = "jdbc:mysql://localhost:3306/HotelDBMS";
 
-	        // Connection class object
-	        Connection con = null;
+		// Username and password to access DB
+		// Custom initialization
+		String user = "root";
+		String pass = "root";
 
-	        // Try block to check for exceptions
-	        try {
+		// Entering the data
+		Scanner scanner = new Scanner(System.in);
+		String sql = "CREATE TABLE Hotel " + "(id INTEGER PRIMARY KEY, " + " hotelName VARCHAR(8) NOT NULL, "
+				+ "  hotelLocation VARCHAR(8), " + "  createdDate Date NOT NULL, " + "  updateddDate Date, "
+				+ " isActive bit NOT NULL" + ")";
 
-	            Driver driver = (Driver) Class.forName("com.mysql.cj.jdbc.Driver").newInstance();
-	            // Registering drivers
-	            DriverManager.registerDriver(driver);
+		// Connection class object
+		Connection con = null;
 
-	            // Reference to connection interface
-	            con = DriverManager.getConnection(url, user,
-	                    pass);
+		// Try block to check for exceptions
+		try {
 
-	            // Creating a statement
-	            Statement st = con.createStatement();
+			Driver driver = (Driver) Class.forName("com.mysql.cj.jdbc.Driver").newInstance();
+			// Registering drivers
+			DriverManager.registerDriver(driver);
 
-	            // Executing query
-	            int m = st.executeUpdate(sql);
-	            if (m >=0)
-	                System.out.println(
-	                        "inserted successfully : " + sql);
-	            else
-	                System.out.println("insertion failed");
+			// Reference to connection interface
+			con = DriverManager.getConnection(url, user, pass);
 
-	            // Closing the connections
-	            con.close();
-	        }
+			// Creating a statement
+			Statement st = con.createStatement();
 
-	        // Catch block to handle exceptions
-	        catch (Exception ex) {
-	            // Display message when exceptions occurs
-	            System.err.println(ex);
-	        }
+			// Executing query
+			int m = st.executeUpdate(sql);
+			if (m >= 0)
+				System.out.println("inserted successfully : " + sql);
+			else
+				System.out.println("insertion failed");
+
+			// Closing the connections
+			con.close();
+		}
+
+		// Catch block to handle exceptions
+		catch (Exception ex) {
+			// Display message when exceptions occurs
+			System.err.println(ex);
+		}
 	}
 
-	
-	
-	
 }
