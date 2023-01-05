@@ -10,6 +10,35 @@ import java.util.Random;
 import java.util.Scanner;
 
 public class Hotel {
+	
+//	print hotels 
+	public void printTenHotels() {
+		
+		
+		
+	}
+	
+//	10,000 hotels
+	public void insertMoreHotels() {
+		
+		
+		
+		
+		
+	}
+	
+	
+	
+//	one hotel
+	public void insertOneHotel() {
+		
+		
+		
+	}
+	
+	
+	
+	
 
 //	method to update value in one column
 	public void makeIsActiveFalseById() {

@@ -11,12 +11,15 @@ public class MainClass {
 		System.out.println("\t \t ****************************** \t \t");
 		System.out.println("\t \t ***Please Choose One Option*** \t \t");
 		System.out.println("\t \t ****************************** \t \t");
-		System.out.println("\t\t 1. Create Hotels Table ");
-		System.out.println("\t\t 2. Create Room Type Table  ");
-		System.out.println("\t\t 3. Create Rooms Table ");
-		System.out.println("\t\t 4. Create Guests Table  ");
-		System.out.println("\t\t 5. Create Employee Type Table  ");
-		System.out.println("\t\t 6. Create Employees Table  ");
+		System.out.println("\t\t 1. Insert 10,000 hotels ");
+		System.out.println("\t\t 2. Insert 1 hotel");
+		System.out.println("\t\t 3. Print 10 hotels ");
+//		System.out.println("\t\t 1. Create Hotels Table ");
+//		System.out.println("\t\t 2. Create Room Type Table  ");
+//		System.out.println("\t\t 3. Create Rooms Table ");
+//		System.out.println("\t\t 4. Create Guests Table  ");
+//		System.out.println("\t\t 5. Create Employee Type Table  ");
+//		System.out.println("\t\t 6. Create Employees Table  ");
 		System.out.println("\t\t 7. Insert values Hotels  ");
 		System.out.println("\t\t 8. Read from Hotels Table  ");
 		System.out.println("\t\t 9. Read from Hotels Table By Id ");
@@ -27,11 +30,9 @@ public class MainClass {
 	}
 
 	public static void main(String a[]) {
-		
-		
+
 		Hotel hotelTable = new Hotel();
-		
-		
+
 		boolean isExit = true;
 
 		while (isExit) {
@@ -45,19 +46,23 @@ public class MainClass {
 
 			case 1:
 
-
-				hotelTable.hotelTable();
+				hotelTable.insertMoreHotels();
 
 				break;
 
 			case 2:
-				RoomType myRoomTypeTable = new RoomType();
-				myRoomTypeTable.roomTableType();
+
+				hotelTable.insertOneHotel();
+
+//				RoomType myRoomTypeTable = new RoomType();
+//				myRoomTypeTable.roomTableType();
 				break;
 
 			case 3:
-				Room myRoomTable = new Room();
-				myRoomTable.roomTable();
+				
+				hotelTable.printTenHotels();
+//				Room myRoomTable = new Room();
+//				myRoomTable.roomTable();
 
 				break;
 

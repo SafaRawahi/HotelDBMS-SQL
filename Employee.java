@@ -37,7 +37,7 @@ public class Employee {
 			int inputid = scanner.nextInt();
 //      int count=1;
 
-			String sql = "UPDATE hotel SET isActive='false' WHERE id='" + inputid + "'";
+			String sql = "UPDATE employees SET is_Active='0' WHERE id='" + inputid + "'";
 			System.out.println(sql);
 
 			try {
@@ -81,7 +81,7 @@ public class Employee {
 			int inputid = scanner.nextInt();
 //      int count=1;
 
-			String sql = "delete from hotel where id ='" + inputid + "'";
+			String sql = "delete from employees where id ='" + inputid + "'";
 
 			System.out.println(sql);
 
@@ -125,11 +125,11 @@ public class Employee {
 			System.out.println("Number Of Id You Want To Update ");
 			int inputid = scanner.nextInt();
 //      int count=1;
-			System.out.println("Enter Hotel Name: ");
-			String hotelNameInput = scanner.next();
-			System.out.println("Enter Hotel Location: ");
-			String hotelLocatoinInput = scanner.next();
-			String sql = "UPDATE Hotel SET hotelname='" + hotelNameInput + "',hotellocation='" + hotelLocatoinInput
+			System.out.println("Enter created Date: ");
+			String created_Date = scanner.next();
+			System.out.println("Enter updated Date: ");
+			String updated_Date = scanner.next();
+			String sql = "UPDATE employees SET created_Date='" + created_Date + "',updated_Date='" + updated_Date
 					+ "' WHERE id=" + inputid;
 			System.out.println(sql);
 
@@ -171,17 +171,17 @@ public class Employee {
 			System.out.println("Numbers Of Id You Want To Show ");
 			int inputid = scanner.nextInt();
 			int count = 1;
-			String sql = "select * from hotel where id='" + inputid + "'";
+			String sql = "select * from employees where id='" + inputid + "'";
 			ResultSet rs = st.executeQuery(sql);
 			while (rs.next() && count <= inputid) {
 				int id = rs.getInt("id");
-				String hotelname = rs.getString("hotelName");
-				String hotellocation = rs.getString("hotelLocation");
-				Date createddate = rs.getDate("createdDate");
-				Date updateddate = rs.getDate("updateddDate");
-				String isActive = rs.getString("isActive");
-				System.out.println(id + " " + hotelname + " " + hotellocation + " " + createddate + " " + updateddate
-						+ " " + isActive);
+				String employee_Type_id = rs.getString("employee_Type_id");
+				String Room_id = rs.getString("Room_id");
+				Date created_Date = rs.getDate("created_Date");
+				Date updated_Date = rs.getDate("updated_Date");
+				String is_Active = rs.getString("is_Active");
+				System.out.println(id + " " + employee_Type_id + " " + Room_id + " " + created_Date + " " + updated_Date
+						+ " " + is_Active);
 				count++;
 			}
 		} catch (Exception ex) {
@@ -213,16 +213,16 @@ public class Employee {
 			System.out.println("Numbers Of User You Want To Read ");
 			int read = scanner.nextInt();
 			int count = 1;
-			String sql = "select * from hotel";
+			String sql = "select * from employees";
 			ResultSet rs = st.executeQuery(sql);
 			while (rs.next() && count <= read) {
 				int id = rs.getInt("id");
-				String hotelName = rs.getString("hotelName");
-				String hotelLocation = rs.getString("hotelLocation");
-				Date createdDate = rs.getDate("createdDate");
-				Date updateddDate = rs.getDate("updateddDate");
+				String employee_Type_id = rs.getString("employee_Type_id");
+				String Room_id = rs.getString("Room_id");
+				Date created_Date = rs.getDate("created_Date");
+				Date updated_Date = rs.getDate("updated_Date");
 				String isActive = rs.getString("isActive");
-				System.out.println(id + " " + hotelName + " " + hotelLocation + " " + createdDate + " " + updateddDate
+				System.out.println(id + " " + employee_Type_id + " " + Room_id + " " + created_Date + " " + updated_Date
 						+ " " + isActive);
 				count++;
 			}
@@ -246,17 +246,17 @@ public class Employee {
 		Scanner scanner = new Scanner(System.in);
 		System.out.println(" Enter The Numbers Of  Rows You Want ");
 		Integer rows = scanner.nextInt();
-		String hotelName = "Shang";
-		String hotelLocation = "Muscat";
-		String createdDate = "1996-01-01";
-		String updateddDate = "2015-01-01";
-		boolean isActive = true;
+		String employee_Type_id = "manager";
+		String Room_id = "123";
+		String created_Date = "1996-01-01";
+		String updated_Date = "2015-01-01";
+		boolean is_Active = true;
 		Random rn = new Random();
 		Integer numberToAdd = rn.nextInt(100);
 
 		for (int i = 0; i <= rows; i++) {
-			String sql = "insert into hotel values (" + i + numberToAdd + ", '" + hotelName + i + "', '" + hotelLocation
-					+ i + "', '" + createdDate + "', '" + updateddDate + "', " + isActive + ")";
+			String sql = "insert into employees values (" + i + numberToAdd + ", '" + employee_Type_id + i + "', '"
+					+ Room_id + i + "', '" + created_Date + "', '" + updated_Date + "', " + is_Active + ")";
 
 			// Connection class object
 			Connection con = null;
